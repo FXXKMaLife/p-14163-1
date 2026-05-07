@@ -15,7 +15,7 @@ public class Answer {
     private LocalDateTime createDate;
 
     @ManyToOne
-    private Question question;
+    private Question question; //question_ID COLUMN
 
     @Column(columnDefinition = "TEXT")
     private String content;
