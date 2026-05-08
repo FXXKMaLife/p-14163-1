@@ -1,26 +1,28 @@
-package com.mysite.sbb;
+package com.mysite.sbb.answer;
 
+import com.mysite.sbb.question.Question;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
-public class Question {
+@Getter
+@Setter
+public class Answer {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private int id;
 
     private LocalDateTime createDate;
 
-    @Column(length = 200)
-    private String subject;
+    @ManyToOne(fetch = LAZY)
+    private Question question; //question_ID COLUMN
 
     @Column(columnDefinition = "TEXT")
     private String content;
-
-    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-    private List<Answer> answers;
 }
