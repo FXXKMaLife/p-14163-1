@@ -18,7 +18,7 @@ public class QuestionController {
     public String list(Model model) {
         model.addAttribute("name", "paul");
         model.addAttribute("ages", List.of(10, 20, 30, 40, 50));
-        return "question/list";
+        return "question_list";
 
 
     }
